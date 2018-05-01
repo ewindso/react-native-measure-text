@@ -55,7 +55,10 @@ RCT_EXPORT_METHOD(measure:(NSDictionary *)options
         (void) [layoutManager glyphRangeForTextContainer:textContainer];
         CGRect resultRect = [layoutManager usedRectForTextContainer:textContainer];
 
-        [results addObject:[NSNumber numberWithFloat:resultRect.size.height]];
+        [results addObject:@{
+                             @"width":[NSNumber numberWithFloat:resultRect.size.width],
+                             @"height":[NSNumber numberWithFloat:resultRect.size.height]
+                             }];
     }
     resolve(results);
 }
